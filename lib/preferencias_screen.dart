@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lab7persistencia/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'utils/database_helper.dart';
 import 'auditoria.dart';
@@ -25,6 +26,8 @@ class _PreferenciasScreenState extends State<PreferenciasScreen> {
     setState(() {
       _userName = prefs.getString('userName') ?? '';
       _counter = prefs.getInt('counter') ?? 0;
+
+
     });
   }
 
@@ -33,6 +36,15 @@ class _PreferenciasScreenState extends State<PreferenciasScreen> {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('userName', _userName);
     await prefs.setInt('counter', _counter);
+
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen()
+        )
+    ).then((_) {
+
+      _loadPreferences();
+    });
 
     // Registrar la acción en la base de datos usando insertAccion
     await dbHelper.insertAccion('Guardó preferencias: $_userName');

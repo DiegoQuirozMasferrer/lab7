@@ -59,11 +59,15 @@ class _HomeScreenState extends State<HomeScreen> {
               onTap: () async {
                 // Navega a la pantalla de preferencias y actualiza al regresar
                 await Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => PreferenciasScreen()),
-                );
-                _loadPreferences();  // Recarga las preferencias al volver
-                // Registrar la acción en la base de datos usando insertAccion
+                    context,
+                    MaterialPageRoute(builder: (context) => PreferenciasScreen()
+                    )
+                ).then((_) {
+
+                  _loadPreferences();
+                });
+
+
                 await dbHelper.insertAccion('Navegó a Preferencias');
               },
             ),
@@ -86,12 +90,12 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Hola $_userName',  // Mostrar el nombre de usuario cargado
+              'Hola $_userName',  //
               style: TextStyle(fontSize: 24),
             ),
-            SizedBox(height: 20),  // Un espacio entre los textos
+            SizedBox(height: 20),  //
             Text(
-              'Contador: $_counter',  // Mostrar el contador cargado
+              'Contador: $_counter',  //
               style: TextStyle(fontSize: 20),
             ),
           ],
