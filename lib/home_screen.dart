@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'auditoria_screen.dart';
 import 'preferencias_screen.dart';
-import 'database_helper.dart';  // Para la base de datos
+import 'utils/database_helper.dart';  // Para la base de datos
 import 'auditoria.dart';  // Para la clase Auditoria
 
 class HomeScreen extends StatefulWidget {
@@ -62,9 +63,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   MaterialPageRoute(builder: (context) => PreferenciasScreen()),
                 );
                 _loadPreferences();  // Recarga las preferencias al volver
-                // Registrar la acción en la base de datos
-                final auditoria = Auditoria(accion: 'Navegó a Preferencias');
-                await dbHelper.insertAuditoria(auditoria);
+                // Registrar la acción en la base de datos usando insertAccion
+                await dbHelper.insertAccion('Navegó a Preferencias');
               },
             ),
             ListTile(
