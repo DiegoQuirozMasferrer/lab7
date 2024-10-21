@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'auditoria_screen.dart';
 import 'preferencias_screen.dart';
-import 'utils/database_helper.dart';  // Para la base de datos
-import 'auditoria.dart';  // Para la clase Auditoria
+import 'utils/database_helper.dart';
+
 
 class HomeScreen extends StatefulWidget {
   @override

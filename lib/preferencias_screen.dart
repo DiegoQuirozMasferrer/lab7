@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lab7persistencia/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'utils/database_helper.dart';
-import 'auditoria.dart';
+
 
 class PreferenciasScreen extends StatefulWidget {
   @override
